@@ -1,27 +1,13 @@
-package main
-
-import "fmt"
+package fibonacci_number
 
 // 斐波那契数列并不算是动态规划，因为不满足：最优子结构，不过可以了解最优解法逐步求精的过程
-func main() {
-	var n int = 20
-	res := fib(n)
-	fmt.Printf("暴力解法, res:%v", res)
-	fmt.Println()
-	res = cacheFib(n)
-	fmt.Printf("缓存解法, res:%v", res)
-	fmt.Println()
-	res = toTopFib(n)
-	fmt.Printf("自底而上的解法, res:%v", res)
-	fmt.Println()
-}
 
 // 1.暴力解法
-func fib(n int) int {
+func Fib(n int) int {
 	if n == 1 || n == 2 {
 		return 1
 	}
-	return fib(n-1) + fib(n-2)
+	return Fib(n-1) + Fib(n-2)
 }
 
 // 2.带缓存的递归解法
