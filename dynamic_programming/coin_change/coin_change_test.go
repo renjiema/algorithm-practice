@@ -2,8 +2,8 @@ package coin_change
 
 import "testing"
 
-var cs = []int{1, 2, 5}
-var amount = 13
+var cs = []int{2, 5, 10, 1}
+var amount = 27
 
 func TestViolenceCoinChange(t *testing.T) {
 	res := ViolenceCoinChange(cs, amount)

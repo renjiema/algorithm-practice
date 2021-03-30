@@ -82,13 +82,13 @@ func ToTopCoinChange(cs []int, amount int) int {
 	var dp = make([]int, lens)
 	// base case
 	dp[0] = 0
-	dp[amount] = lens
-	for i := 0; i < amount+1; i++ {
+	for i := 1; i < lens; i++ {
+		dp[i] = lens
 		for _, coin := range cs {
 			if i < coin {
 				continue
 			}
-			dp[i] = min(lens, 1+dp[i-coin])
+			dp[i] = min(dp[i], 1+dp[i-coin])
 		}
 	}
 	if dp[amount] == lens {
