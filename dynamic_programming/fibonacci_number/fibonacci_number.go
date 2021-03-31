@@ -1,7 +1,7 @@
 package fibonacci_number
 
 // 斐波那契数列并不算是动态规划，因为不满足：最优子结构，不过可以了解最优解法逐步求精的过程
-
+// https://leetcode-cn.com/problems/fibonacci-number/
 // 1.暴力解法
 func Fib(n int) int {
 	if n == 1 || n == 2 {

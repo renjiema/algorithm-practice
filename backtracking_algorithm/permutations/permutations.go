@@ -1,5 +1,6 @@
 package permutations
 
+// https://leetcode-cn.com/problems/permutations/
 // 全排列
 func Permute(nums []int) [][]int {
 	res := [][]int{}

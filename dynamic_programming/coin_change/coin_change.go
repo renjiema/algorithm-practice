@@ -2,6 +2,7 @@ package coin_change
 
 var coins []int
 
+// https://leetcode-cn.com/problems/coin-change/
 func ViolenceCoinChange(cs []int, amount int) int {
 	coins = cs
 	return violenceDp(amount)

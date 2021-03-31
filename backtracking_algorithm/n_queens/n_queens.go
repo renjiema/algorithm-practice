@@ -1,5 +1,6 @@
 package n_queens
 
+// https://leetcode-cn.com/problems/n-queens/
 // n皇后问题
 func solveNQueens(n int) [][]string {
 	res := [][]string{}
