@@ -43,11 +43,13 @@ func minDepth2(root *TreeNode) int {
 		count := len(queue)
 		/* 将当前队列中的所有节点向四周扩散 */
 		for i := 0; i < count; i++ {
-			node := queue[i]
-			queue = queue[i:]
+			node := queue[0]
+			queue = queue[1:]
+			// 判断是否到达终点
 			if node.Left == nil && node.Right == nil {
 				return depth
 			}
+			// 将相邻节点加入队列
 			if node.Left != nil {
 				queue = append(queue, node.Left)
 			}
