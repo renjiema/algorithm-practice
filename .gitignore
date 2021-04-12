@@ -36,4 +36,4 @@
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,go,jetbrains,vscode
-go.sum
+
