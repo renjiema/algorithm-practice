@@ -1,5 +1,7 @@
 package lfu
 
+// https://leetcode-cn.com/problems/lfu-cache
+// 也可通过双向链表实现，node中存放freq
 type LFUCache struct {
 	// 存放key,value
 	kv map[int]int
