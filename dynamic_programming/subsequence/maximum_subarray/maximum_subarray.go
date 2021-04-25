@@ -21,3 +21,20 @@ func max(a, b int) int {
 	}
 	return b
 }
+
+// 动态规划解法
+func maxSubArrayByDP(nums []int) int {
+	n := len(nums)
+	if n < 1 {
+		return 0
+	}
+	dp_1 := nums[0]
+	res := nums[0]
+	for i := 1; i < n; i++ {
+		// 状态方程
+		dp := max(nums[i], dp_1+nums[i])
+		dp_1 = dp
+		res = max(res, dp)
+	}
+	return res
+}
