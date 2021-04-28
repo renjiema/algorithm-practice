@@ -24,10 +24,12 @@ func findRotateSteps(ring string, key string) int {
 		}
 		res := n * (m + 1)
 		for _, v := range indexMap[key[j]] {
+			// 计算当前位置到索引的距离
 			dist := v - i
 			if dist < 0 {
 				dist = -dist
 			}
+			// 判断左旋还是右旋
 			count := min(dist, n-dist)
 			res = min(res, 1+count+dp(v, j+1))
 		}
@@ -44,3 +46,5 @@ func min(a, b int) int {
 	}
 	return a
 }
+
+// TODO:迭代解法
