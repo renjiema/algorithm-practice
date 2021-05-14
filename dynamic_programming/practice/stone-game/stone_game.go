@@ -44,3 +44,39 @@ func max(a, b int) int {
 	}
 	return b
 }
+
+// 状态压缩
+func stoneGame3(piles []int) bool {
+	n := len(piles)
+	// 定义dp数组,i和j表示piles的下标，k两个值，0表示先手获取的最大值、1表示后手获取的最大值
+	dp := make([][]int, n)
+	for i := 0; i < n; i++ {
+		dp[i] = make([]int, 2)
+		dp[i][0] = piles[i]
+	}
+	pre := dp[0]
+	//右对角线遍历
+	for i, j := 0, 1; j < n; {
+		left := dp[j][1] + piles[i]
+		right := pre[1] + piles[j]
+		temp := []int{dp[j][0], dp[j][1]}
+		if left > right {
+			dp[j][1] = dp[j][0]
+			dp[j][0] = left
+		} else {
+			dp[j][1] = pre[0]
+			dp[j][0] = right
+		}
+		if j == n-1 && i != 0 {
+			j = j - i + 1
+			i = 0
+			pre = dp[j-1]
+		} else {
+			i++
+			j++
+			pre = temp
+		}
+	}
+
+	return dp[n-1][0] > dp[n-1][1]
+}
