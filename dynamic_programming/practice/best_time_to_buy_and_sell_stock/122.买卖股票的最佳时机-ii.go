@@ -6,6 +6,19 @@
 
 // @lc code=start
 func maxProfit(prices []int) int {
+	// 贪心解法
+	res := 0
+	for i := 1; i < len(prices); i++ {
+		if prices[i] > prices[i-1] {
+			res = res + prices[i] - prices[i-1]
+		}
+	}
+	return res
+}
+
+// @lc code=end
+
+func maxProfit2(prices []int) int {
 	// 动态规划解法
 	n := len(prices)
 	dp := make([][]int, n+1)
@@ -26,6 +39,3 @@ func max(a, b int) int {
 	}
 	return b
 }
-
-// @lc code=end
-
