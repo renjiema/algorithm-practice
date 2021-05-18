@@ -6,6 +6,27 @@
 
 // @lc code=start
 func maxProfit(prices []int) int {
+	n := len(prices)
+	// base case
+	i_2_0, i_2_1, i_1_0, i_1_1 := 0, math.MinInt32, 0, math.MinInt32
+	for i := 0; i < n; i++ {
+		i_2_0 = max(i_2_0, i_2_1+prices[i])
+		i_2_1 = max(i_2_1, i_1_0-prices[i])
+		i_1_0 = max(i_1_0, i_1_1+prices[i])
+		i_1_1 = max(i_1_1, -prices[i])
+	}
+	return i_2_0
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+// @lc code=end
+func maxProfit(prices []int) int {
 	// 动态规划解法
 	dp := make([][][]int, n+1)
 	for i := 0; i <= n; i++ {
@@ -28,13 +49,3 @@ func maxProfit(prices []int) int {
 	}
 	return dp[n][2][0]
 }
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-// @lc code=end
-
