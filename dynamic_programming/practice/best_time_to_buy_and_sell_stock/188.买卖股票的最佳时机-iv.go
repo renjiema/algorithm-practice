@@ -8,6 +8,9 @@
 func maxProfit(k int, prices []int) int {
 	// 定义状态dp(i,k,0 or 1):i表示天数，k交易次数，0表示未持股，1表示持股，值为利润
 	n := len(prices)
+	if k > n/2 {
+		return maxProfit2(prices)
+	}
 	dp := make([][][]int, n+1)
 	for i := 0; i <= n; i++ {
 		dp[i] = make([][]int, k+1)
@@ -28,6 +31,18 @@ func maxProfit(k int, prices []int) int {
 		}
 	}
 	return dp[n][k][0]
+}
+func maxProfit2(prices []int) int {
+	n := len(prices)
+	// base case
+	i_2_0, i_2_1, i_1_0, i_1_1 := 0, math.MinInt32, 0, math.MinInt32
+	for i := 0; i < n; i++ {
+		i_2_0 = max(i_2_0, i_2_1+prices[i])
+		i_2_1 = max(i_2_1, i_1_0-prices[i])
+		i_1_0 = max(i_1_0, i_1_1+prices[i])
+		i_1_1 = max(i_1_1, -prices[i])
+	}
+	return i_2_0
 }
 
 func max(a, b int) int {
