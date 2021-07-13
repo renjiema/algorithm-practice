@@ -29,8 +29,8 @@ func openLock(deadends []string, target string) int {
 				return step
 			}
 			// 遍历当前节点的相邻节点
-			for i := 0; i < 8; i++ {
-				next := rotateOne(cur, i)
+			for j := 0; j < 8; j++ {
+				next := rotateOne(cur, j)
 				if _, ok := visited[next]; !ok {
 					queue = append(queue, next)
 					visited[next] = 0x00
