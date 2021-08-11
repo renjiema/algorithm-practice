@@ -18,6 +18,41 @@ func main() {
 	shellSort(arr)
 	Shuffle(arr)
 	fmt.Printf("并归排序结果:%v \n", mergeSort(arr))
+	Shuffle(arr)
+	quickSort(arr)
+}
+
+// 快速排序
+func quickSort(arr []int) {
+	quickSortImpl(arr, 0, len(arr)-1)
+	fmt.Printf("快速排序结果:%v \n", mergeSort(arr))
+}
+
+func quickSortImpl(arr []int, left, right int) {
+	if left < right {
+		mod := partion(arr, left, right)
+		quickSortImpl(arr, left, mod-1)
+		quickSortImpl(arr, mod+1, right)
+	}
+}
+
+func partion(arr []int, left, right int) int {
+	pivot := arr[left]
+	i, j := left+1, right
+	for {
+		for i <= j && arr[i] <= pivot {
+			i++
+		}
+		for i <= j && arr[j] >= pivot {
+			j--
+		}
+		if i >= j {
+			break
+		}
+		arr[i], arr[j] = arr[j], arr[i]
+	}
+	arr[left], arr[j] = arr[j], pivot
+	return j
 }
 
 // 并归排序
